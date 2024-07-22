@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Quiz Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz Game</h1>
+    <label for="username">Enter your name:</label>
+    <input type="text" id="username" placeholder="Your name">
+    
+    <div id="quiz">
+      <div class="question">
+        <h2>Question 1: How to write "America" in Kanji?</h2>
+        <label><input type="radio" name="q1" value="0"> 雨莉花</label><br>
+        <label><input type="radio" name="q1" value="0"> アメリカ</label><br>
+        <label><input type="radio" name="q1" value="20"> 亜米利加</label><br>
+        <label><input type="radio" name="q1" value="0"> Rome</label>
+      </div>
+      
+      <div class="question">
+        <h2>Question 2: What is 2 + 2?</h2>
+        <label><input type="radio" name="q2" value="0"> 3</label><br>
+        <label><input type="radio" name="q2" value="20"> 4</label><br>
+        <label><input type="radio" name="q2" value="0"> 5</label><br>
+        <label><input type="radio" name="q2" value="0"> 6</label>
+      </div>
+      
+      <div class="question">
+        <h2>Question 3: How tall am I?</h2>
+        <label><input type="radio" name="q3" value="20"> 168</label><br>
+        <label><input type="radio" name="q3" value="0"> 173</label><br>
+        <label><input type="radio" name="q3" value="0"> 190</label><br>
+        <label><input type="radio" name="q3" value="0"> 165</label>
+      </div>
+      
+      <div class="question">
+        <h2>Question 4: How long does it take from Ibaraki station to OIC?</h2>
+        <label><input type="radio" name="q4" value="0"> 30 minutes</label><br>
+        <label><input type="radio" name="q4" value="20"> 8 minutes</label><br>
+        <label><input type="radio" name="q4" value="0"> 50 minutes</label><br>
+        <label><input type="radio" name="q4" value="0"> 15 minutes</label>
+      </div>
+      
+      <div class="question">
+        <h2>Question 5: What is the chemical symbol for water?</h2>
+        <label><input type="radio" name="q5" value="20"> H2O</label><br>
+        <label><input type="radio" name="q5" value="0"> CO2</label><br>
+        <label><input type="radio" name="q5" value="0"> NaCl</label><br>
+        <label><input type="radio" name="q5" value="0"> O2</label>
+      </div>
+    </div>
+    
+    <button onclick="calculateScore()">Submit</button>
+  </div>
+
+  <script>
+    function calculateScore() {
+      const username = document.getElementById('username').value;
+      if (!username) {
+        alert('Please enter your name');
+        return;
+      }
+
+      const questions = document.querySelectorAll('.question');
+      let score = 0;
+
+      questions.forEach(question => {
+        const selectedAnswer = question.querySelector('input[type="radio"]:checked');
+        if (selectedAnswer) {
+          score += parseInt(selectedAnswer.value, 10);
+        }
+      });
+
+      alert(`Hello, ${username}. Your score is ${score}`);
+    }
+  </script>
+</body>
+</html>
